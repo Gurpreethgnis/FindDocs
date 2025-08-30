@@ -1,0 +1,38 @@
+services:
+  docling:
+    image: quay.io/docling-project/docling-serve:latest
+    container_name: docling
+    ports:
+      - "35111:5001"
+    environment:
+      # Enable built-in UI for quick testing
+      - DOCLING_SERVE_ENABLE_UI=true
+
+      # Force OCR for scanned/image PDFs using Tesseract
+      - DOCLING_OCR_ENGINE=tesseract
+      - DOCLING_OCR_LANG=eng
+      - DOCLING_OCR_DISABLE_EASYOCR=true
+      - DOCLING_OCR_FORCE_TESSERACT=true
+      - DOCLING_OCR_TESSERACT_LANG=eng
+      - DOCLING_OCR_TESSERACT_CONFIG=--psm 6
+
+      # Prefer the modern PDF parser backend
+      - DOCLING_PDF_BACKEND=dlparse_v4
+
+      # Ensure Tesseract can find language data
+      - TESSDATA_PREFIX=/usr/share/tessdata
+      
+      # Additional OCR settings for better image processing
+      - DOCLING_OCR_FORCE_FULL_PAGE=true
+      - DOCLING_OCR_DPI=300
+      
+      # Image processing settings
+      - DOCLING_INCLUDE_IMAGES=true
+      - DOCLING_IMAGES_SCALE=2.0
+
+    volumes:
+      # Map local Tesseract language files (copied from Windows installation)
+      - "./temp_tessdata:/usr/share/tessdata:ro"
+
+    restart: unless-stopped
+

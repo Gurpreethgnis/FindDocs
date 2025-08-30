@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Production builds
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary files
+temp_tessdata/
+*.tmp
+*.temp
+
+# Test files (remove if you want to include them)
+test_*.js
+test_*.py
+test_*.txt
+
+# Local configuration files
+setup.bat
+setup.ps1
+check_docling_status.bat
+check_docling_status.ps1
+watcher.py
+
+# Docker volumes and data
+docker-data/
+*.sqlite
+*.db
+
+# Backup files
+*.bak
+*.backup
