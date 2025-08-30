@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Upload, FileText, MessageSquare, Search, Loader2, CheckCircle, XCircle, FolderOpen, HardDrive, Database, SkipForward } from 'lucide-react';
 import './App.css';
+import config from './config';
 
 function App() {
   const [documents, setDocuments] = useState([]);
@@ -31,13 +32,15 @@ function App() {
   // Tab navigation state
   const [activeTab, setActiveTab] = useState('chat'); // 'chat' or 'upload'
 
+
+  
   // Configuration
-  const DOCLING_URL = 'http://localhost:35111'; // Docling Server
-  const OLLAMA_URL = "/api"; // Use proxy - requests will go through React dev server
-  const STORAGE_KEY = 'rag_documents';
-  const HASHES_KEY = 'rag_file_hashes';
-  const CHAT_HISTORY_KEY = 'rag_chat_history';
-  const CURRENT_CONVERSATION_KEY = 'rag_current_conversation';
+  const DOCLING_URL = config.DOCLING_URL;
+  const OLLAMA_URL = config.OLLAMA_URL;
+  const STORAGE_KEY = config.STORAGE_KEY;
+  const HASHES_KEY = config.HASHES_KEY;
+  const CHAT_HISTORY_KEY = config.CHAT_HISTORY_KEY;
+  const CURRENT_CONVERSATION_KEY = config.CURRENT_CONVERSATION_KEY;
 
   // Load saved documents and hashes on component mount
   useEffect(() => {
